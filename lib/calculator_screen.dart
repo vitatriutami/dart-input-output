@@ -1,3 +1,4 @@
+import 'package:calculator/button_values.dart';
 import 'package:flutter/material.dart';
 
 class CalculatorScreen extends StatefulWidget {
@@ -13,21 +14,41 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     return Scaffold(
       body: SafeArea(
         bottom: false,
-        child: Column(children: [
-          // output
-          Container(
-            child: Text(
-              "0", style: TextStyle(
-              fontSize: 48,
-              fontWeight: FontWeight.bold,
+        child: Column(
+          children: [
+            // output
+            Expanded(
+              child: SingleChildScrollView(
+                child: Container(
+                  alignment: Alignment.bottomRight,
+                  padding: const EdgeInsets.all(16),
+                  child: Text(
+                    "0",
+                    style: const TextStyle(
+                      fontSize: 48,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.end,
+                  ),
+                ),
+              ),
             ),
-            textAlign: TextAlign.end,
+
+            // buttons
+            Wrap(
+              children: Btn.buttonValues
+                  .map(
+                    (value) => buildButton(value),
+                  )
+                  .toList(),
             ),
-          ),
-        
-          // buttons
-        ],),
+          ],
+        ),
       ),
     );
+  }
+
+  Widget buildButton(value) {
+    return Text(value);
   }
 }
