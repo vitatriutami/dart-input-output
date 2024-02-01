@@ -10,6 +10,24 @@ class CalculatorScreen extends StatefulWidget {
 class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: SafeArea(
+        bottom: false,
+        child: Column(children: [
+          // output
+          Container(
+            child: Text(
+              "0", style: TextStyle(
+              fontSize: 48,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.end,
+            ),
+          ),
+        
+          // buttons
+        ],),
+      ),
+    );
   }
 }
